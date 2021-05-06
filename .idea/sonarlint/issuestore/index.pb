@@ -26,3 +26,47 @@ A
 src/postReq.js,8/7/8729b8b27a26fa74ad504d8d9ae3d12b1fc9a726
 W
 'src/components/cityForConfigLocality.js,3/4/34d250db2473af9812f9a18f0ccbe34aa8a315d8
+W
+'src/components/guidedModelToPriority.js,1/4/140103971c1b94e5832119cb8f97a48af7f4df37
+P
+ src/components/discoverDealId.js,a/5/a5b8941c734f7df20b4c0de79c59e4be9e719f57
+U
+%src/components/promotedHotelIdsMap.js,c/c/cc647f85c9aeb2e69ba2682b40f19987fd63d8b7
+P
+ src/components/searchableTags.js,f/b/fbee9baedb642c3ccbbb6ae62cf87f1fb6e554b8
+U
+%src/components/maxGSOptionsAllowed.js,6/d/6d3401324e0524d2b17d09f744e0c6a82267a1c0
+W
+'src/components/minGSOptionalsAllowed.js,8/5/8554685a879b71dec9ce14244d71f0b7072b20d8
+]
+-src/components/promotedCityWidgetConfigMap.js,2/6/2638261da053515e7bba465db3bfaba65ecf8f9b
+W
+'src/components/cityABFilterWidgetMap.js,0/8/0893faad175d092c0ba7e6d18bab42a4944a08e8
+[
++src/components/priceRangeHeaderTemplates.js,8/7/8738e4d453f15e736379d155141b1615ef48f640
+h
+8src/components/cityWiseDisplayHeaderForPromotedWidget.js,7/e/7ece759ae154deec448e0ce904227cd140af2cbb
+]
+-src/components/discoverCityWidgetConfigMap.js,1/7/179ccfcfe20bc21520a829cc61084c266029e77b
+\
+,src/components/countryWiseCurrencySymbols.js,7/0/702306a4d8afed5562845bbc75e5c0bab7d9d989
+T
+$src/components/supportedLanguages.js,3/c/3cb979cdac1f888c7517ddc5dd471342f2d2d9e9
+Z
+*src/components/automatedGSEnableCityIds.js,8/4/84b4ca047b4e231a7afb1b8280bc91951ce5b585
+h
+8src/components/enableAmenityFilterAtRoomCategoryLevel.js,5/5/55417a887e2ca36c2ab75c9611d9e6fc38e4a569
+S
+#src/components/requestLevelCache.js,9/f/9f427394ac92776d553bcf90876cff56fdfc62ee
+V
+&src/components/searchableAmenityIds.js,7/8/789000988ecd71204b97741a10cb16ee2ef143e7
+F
+src/components/tags.js,e/d/ed98b52143edf8ac284bef87695b3c916b8381bd
+P
+ src/components/maxCityWidgets.js,8/6/860b3a85a6be29cb039a52fad90c40721beac49b
+X
+(src/components/countryWidgetConfigMap.js,6/1/613dfdc4a5297f5cb7964d8633d7293c404a94c5
+X
+(src/components/applicableFilterConfig.js,2/2/2234dc3e5bac8b784bf1b7909f5c6639895aff88
+`
+0src/components/countryWidgetPriorityConfigMap.js,d/9/d912a8cc65a019ae20aa6fc2e83e74a6e55a12c7

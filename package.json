@@ -15,7 +15,7 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "REACT_APP_API_URL=\"http://jsonplaceholder.typicode.com/posts\" react-scripts start",
+    "start": "REACT_APP_API_URL=\"http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/getConfig?password=searchfilter@123&forceUpdate=true\" react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

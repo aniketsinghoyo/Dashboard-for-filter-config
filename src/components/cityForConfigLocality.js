@@ -4,6 +4,7 @@ import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import MuiAccordion from "@material-ui/core/Accordion";
 import Typography from "@material-ui/core/Typography";
+import axios from 'axios';
 const AccordionSummary = withStyles({
     root: {
         backgroundColor: 'rgba(0, 0, 0, .08)',
@@ -66,7 +67,9 @@ export default class City extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles
+            tile:this.props.tiles,
+            kay:'',
+            val1:'',val2:''
         }
     }
      generateData(data) {
@@ -78,24 +81,73 @@ export default class City extends React.Component {
         }, []);
         return newData;
     }
-    handleChange(event,key,keys,keyss) {
-        console.log(event.target.name);
-        let path = event.target.name.split('.');
-        let depth = path.length;
-        let stat = { ...this.state.tile };
-        let ref = stat;
-        for (let i = 0; i < depth; i += 1) {
-            if (i === depth - 1) {
-                ref[path[i]] = event.target.value;
-            } else {
-                ref = ref[path[i]];
-            }
-        }
-        this.setState({tile:stat});
+    handleChange(event,key,keys,keyss)
+    {
+        let x=this.state.tile;
+        x[key][keys][keyss]=event.target.value;
+        this.setState({tile:x});
     }
-    handleSubmit(event) {
-        alert('A name was submitted: ');
+    handleChange1=(event)=>{
+        this.setState({kay:event.target.value});
+    }
+    handleChange2=(event)=> {
+        this.setState({val1:event.target.value});
+    }
+    handleChange3=(event)=> {
+        this.setState({val2:event.target.value});
+    }
+    handleSubmit=(event)=>{
+       // alert('A name was submitted: ');
         event.preventDefault();
+        console.log(this.state.tile[this.state.key])
+        const x=this.state.tile;
+
+        axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",x,
+            {
+
+                headers: {  'x-api-key':'DemoKeyForDemoClient',
+                    'oyo-client':'demo'} })
+            .then(response=>{ console.log("hari ke charno me pranaam");
+            })
+            .catch(error=>{
+                alert('something went wrong... ');
+                console.log(error);
+           })
+
+    }
+    handleSubmit1=(event)=>{
+       // alert('A name was submitted: ');
+        event.preventDefault();
+        //console.log(this.state.tile[this.state.key])
+        const x=this.state.tile;
+        x[this.state.key][this.state.kay]={};
+        x[this.state.key][this.state.kay]['isEnable']=this.state.val1;
+        x[this.state.key][this.state.kay]['distance']=this.state.val2;
+        this.setState({tile:x});
+        console.log(this.state.tile[this.state.key][this.state.kay]);
+        axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",x,
+            {
+
+                headers: {  'x-api-key':'DemoKeyForDemoClient',
+                    'oyo-client':'demo'} })
+            .then(response=>{ console.log("hari ke charno me pranaam");
+            })
+            .catch(error=>{
+                alert('something went wrong... ');
+                console.log(error);
+        })
+
+    }
+    delete(keys)
+    {
+        let x=this.state.tile;
+        var result = JSON.parse(JSON.stringify(this.state.tile[this.state.key], function(key, value) {
+            return key !== keys ? value : undefined;
+        }));
+        x[this.state.key]=result;
+        // x[this.state.key]=x[this.state.key].filter((drink, index) => index != keys);
+        this.setState({tile:x});
+        console.log(this.state.tile[this.state.key]);
     }
 
     render() {
@@ -108,10 +160,11 @@ export default class City extends React.Component {
                             <Typography><b>{key}</b></Typography>
                         </AccordionSummary>
                         <AccordionDetails>
+                            <div>
                             {this.generateData(tile[key]).map(keys=>
                                 <Accordion>
                                     <AccordionSummary>
-                                        <Typography><b>{keys}</b></Typography>
+                                        <Typography><b>{keys}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onClick={this.delete.bind(this,keys)}>Delete</button></b></Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
@@ -120,15 +173,43 @@ export default class City extends React.Component {
                                                     this.generateData(tile[key][keys]).map(keyss=>
                                                         <pre><b>{keyss} : <input type="text" name={keys} value={tile[key][keys][keyss]} onChange={(event)=>this.handleChange(event,key,keys,keyss)}/></b></pre>
                                                     )}
-                                                <input type="submit" value="Submit" />
+                                                <input type="submit" value="Post"/>
                                             </form>
                                         </Typography>
+
                                     </AccordionDetails>
+
                                 </Accordion>
+
                             )
                             }
+                            <br/>
+                                <form onSubmit={this.handleSubmit}>
+                                    <input type="submit" value="Post"/>
+                                </form><br/>
+                                <Accordion>
+                                <AccordionSummary>
+                                    <Typography><b>Add</b></Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography>
+                                        <form onSubmit={this.handleSubmit1}>
+                                            <label>
+                                                <b>key </b>
+                                                <input type="text" name="kay" value={this.state.name} style={{width: "25px"}} onChange={this.handleChange1} />
+                                                <pre><b>isEnable:</b>
+                                                  <input type="text" name="isEnable" value={this.state.name} onChange={this.handleChange2} /></pre>
+                                                <pre><b>distance:</b><input type name="distance" value={this.state.val} onChange={this.handleChange3} /></pre>
+                                            </label>
+                                            <input type="submit" value="Add & Post"/>
+                                        </form>
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
 
+                            </div>
                         </AccordionDetails>
+
                     </Accordion>
                 </div>
 
