@@ -67,7 +67,7 @@ export default class Promoted extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles,col:false,
             nam:'',
             val:''
         }
@@ -85,14 +85,14 @@ export default class Promoted extends React.Component {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys]);
     }
     handleChange1= (event) => {
-        this.setState({nam: event.target.value});
+        this.setState({nam: event.target.value,col:true});
     }
     handleChange2 = (event)=> {
-        this.setState({val: event.target.value});
+        this.setState({val: event.target.value,col:true});
     }
     handleSubmit=(event)=> {
         // alert('A name was submitted: ');
@@ -102,7 +102,7 @@ export default class Promoted extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -113,7 +113,8 @@ export default class Promoted extends React.Component {
         //alert('A name was submitted: ');
         event.preventDefault();
         let x=this.state.tile;
-        x[this.state.key][this.state.nam]=this.state.val;
+        if(this.state.nam.length!=0){
+        x[this.state.key][this.state.nam]=this.state.val;}
         this.setState({tile:x});
         console.log(this.state.tile[this.state.key][this.state.nam]);
         axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",this.state.tile,
@@ -121,7 +122,7 @@ export default class Promoted extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -136,7 +137,7 @@ export default class Promoted extends React.Component {
         // }));
         delete x[this.state.key][keys];
         //x[this.state.key]=x[this.state.key].filter((drink, index) => index !== keys);
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[this.state.key]);
     }
 
@@ -147,7 +148,7 @@ export default class Promoted extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <div>
@@ -163,7 +164,7 @@ export default class Promoted extends React.Component {
                                                     <form onSubmit={this.handleSubmit}>
 
                                                         <pre><b> <textarea name={keys}  value={tile[key][keys]} onChange={(event)=>this.handleChange(event,key,keys)} /></b></pre>
-                                                        <input type="submit" value="Post" />
+                                                        <input type="submit"  style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                                     </form>
                                                 }
                                             </div>
@@ -173,7 +174,7 @@ export default class Promoted extends React.Component {
                             )
                             }<br/>
                             <form onSubmit={this.handleSubmit}>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                             <br/>
                             <Accordion>
@@ -184,11 +185,11 @@ export default class Promoted extends React.Component {
                                     <form onSubmit={this.handleSubmit1}>
                                         <label>
                                             key:
-                                            <input type="text" name="" value={this.state.nam} onChange={this.handleChange1} />
-                                            value:
+                                            <input type="text" name="" style={{'width':'30px'}} value={this.state.nam} onChange={this.handleChange1} /><br/>
+                                            value:<br/>
                                             <textarea name="" value={this.state.val} onChange={this.handleChange2} />
-                                        </label>
-                                        <input type="submit" value="Post" />
+                                        </label><br/>
+                                        <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                     </form>
                                 </AccordionDetails>
                             </Accordion>

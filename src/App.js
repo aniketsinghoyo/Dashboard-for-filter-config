@@ -11,7 +11,6 @@ function App() {
         <ButtonAppBar/>
 
         <Data/>
-        {/*<PostRe/>*/}
 
     </div>
   );

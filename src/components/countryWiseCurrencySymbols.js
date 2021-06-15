@@ -67,7 +67,7 @@ export default class CountryWise extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles, col:false,
             val1:'',val2:''
         }
     }
@@ -80,11 +80,16 @@ export default class CountryWise extends React.Component {
         }, []);
         return newData;
     }
+    handleChange=(event,key,keys)=>{
+        let x=this.state.tile;
+        x[key][keys]=event.target.value;
+        this.setState({tile:x,col:true});
+    }
     handleChange1=(event)=>{
-         this.setState({val1:event.target.value});
+         this.setState({val1:event.target.value,col:true});
     }
     handleChange2=(event)=>{
-        this.setState({val2: event.target.value});
+        this.setState({val2: event.target.value,col:true});
     }
     handleSubmit=(event)=>{
         //alert('A name was submitted: ');
@@ -96,7 +101,7 @@ export default class CountryWise extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -109,7 +114,8 @@ export default class CountryWise extends React.Component {
         event.preventDefault();
 
         const x=this.state.tile;
-        x[this.state.key][this.state.val1]=this.state.val2;
+        if(this.state.val1.length!=0){
+        x[this.state.key][this.state.val1]=this.state.val2;}
         this.setState({tile:x});
 
         axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",this.state.tile,
@@ -117,7 +123,7 @@ export default class CountryWise extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -132,7 +138,7 @@ export default class CountryWise extends React.Component {
             return key !== keys ? value : undefined;
         }));
         x[this.state.key]=result;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
     }
 
     render() {
@@ -142,7 +148,7 @@ export default class CountryWise extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -158,7 +164,7 @@ export default class CountryWise extends React.Component {
                                 )}
                             </div>
                             <form onSubmit={this.handleSubmit}>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                         </Typography>
                     </AccordionDetails>
@@ -173,7 +179,7 @@ export default class CountryWise extends React.Component {
                                     <input type="text" name="" style={{'width':'60px','height':'30px'}} value={this.state.name} style={{'width':"60px"}} onChange={this.handleChange1} />:
                                     <input type="text" name="" style={{'width':'60px','height':'30px'}} value={this.state.val} style={{'width':"60px"}} onChange={this.handleChange2} />
                                 </label>
-                                  <input type="submit" value="Add &post" />
+                                  <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Add &post" />
                             </form>
                         </AccordionDetails>
                     </Accordion>

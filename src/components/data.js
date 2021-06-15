@@ -96,52 +96,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
   const tileData = [
-
-    //   {
     //       img: process.env.REACT_APP_API_URL,
      //       open -n -a "Google Chrome" --args --user-data-dir=/tmp/temp_chrome_user_data_dir http://localhost:3000/ --disable-web-security
-    //       title: 'Image',
-    //       author: 'author',
-    //   }
+
       // {/*<Box p={1} bgcolor="grey.300">*/}
       //  {/*    /!*<b>{key}</b>*!/*/}
 
       //  {/*    /!*<div><pre>{JSON.stringify(tile3[key], null, 2) }</pre></div>*!/*/}
     ];
 
-
-
 export default function Data() {
     const classes = useStyles();
     const [tile, setTile] = useState([]);
     useEffect( async() => {
-        //  const testURL = "http://filtersuggestion-api-1.search.internal.oyorooms.io/runtimeConfig/getConfig?password=searchfilter@123&forceUpdate=true";
-        //
-        // const myInit = {
-        //     method: 'GET',
-        //     mode: 'cors',
-        //     headers: {
-        //         "oyo-client":"demo","Access-Control-Allow-Origin" : "*",
-        //
-        //         "Access-Control-Allow-Credentials" : true,"Access-Control-Allow-Methods": "GET","x-api-key":"DemoKeyForDemoClient"}
-        // };
-        //
-        // const myRequest = new Request(testURL, myInit);
-        //
-        //  await fetch(myRequest).then(function(response) {
-        //     //if(response.ok){
-        //     console.log(response);
-        //     return response;
-        //     // else{
-        //     //     console.log("my life");
-        //     // }
-        // }).catch(function(e){
-        //
-        //     console.log(e);
-        // "http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/getConfig?password=searchfilter@123&forceUpdate=true",
-        //     {  headers: {  'x-api-key':'DemoKeyForDemoClient',
-        //             'oyo-client':'demo'} }
-        //  });
         axios.get(process.env.REACT_APP_API_URL,
                 {  headers: {  'x-api-key':'DemoKeyForDemoClient',
                         'oyo-client':'demo'} })
@@ -149,11 +116,6 @@ export default function Data() {
                 // console.log(process.env.REACT_APP_API_URL);
                 setTile(response.data);
                 console.log("hari ke charno me pranaam");
-
-                //console.log(response.data['cityABFilterWidgetMap']['1']['DISCOVER_WIDGET'][0]['enabled'])
-
-
-               //setTile(response.data['promotedHotelIdsMap']['1']);
             })
             .catch(error=>{
                 alert('something went wrong...')
@@ -178,7 +140,7 @@ export default function Data() {
 
     return (
 
-        <div ><city/>
+        <div >
             <Box
                 display="flex"
                 flexWrap="nowrap"

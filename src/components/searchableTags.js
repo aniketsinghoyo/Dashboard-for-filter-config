@@ -67,7 +67,7 @@ export default class Search extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles,col:false,
             nam:'',
             val:''
         }
@@ -85,11 +85,11 @@ export default class Search extends React.Component {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys]);
     }
     handleChange1= (event) => {
-        this.setState({val: event.target.value});
+        this.setState({val: event.target.value,col:true});
     }
     handleSubmit=(event)=> {
         //alert('A name was submitted: ');
@@ -99,7 +99,7 @@ export default class Search extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -110,7 +110,8 @@ export default class Search extends React.Component {
        // alert('A name was submitted: ');
         event.preventDefault();
         let x=this.state.tile;
-        x[this.state.key].push(this.state.val);
+        if(this.state.val.length!=0){
+        x[this.state.key].push(this.state.val);}
         this.setState({tile:x});
         console.log(this.state.tile[this.state.key]);
         axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",this.state.tile,
@@ -118,7 +119,7 @@ export default class Search extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -133,7 +134,7 @@ export default class Search extends React.Component {
         // }));
         // x[this.state.key]=result;
         x[this.state.key]=x[this.state.key].filter((drink, index) => index != keys);
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[keys]);
     }
 
@@ -144,7 +145,7 @@ export default class Search extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -155,7 +156,7 @@ export default class Search extends React.Component {
                                         <pre><b>{tile[key][keys]}  <button onClick={this.delete.bind(this,keys)}>Delete</button></b></pre>
                                     )}
                                 <form onSubmit={this.handleSubmit}>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                                 <Accordion>
                                     <AccordionSummary>
@@ -166,9 +167,9 @@ export default class Search extends React.Component {
                                             <label>
 
                                                 value :&nbsp;&nbsp;
-                                                <input type="text" name="" value={this.state.val} onChange={this.handleChange1} />
+                                                <input type="text" name="" style={{'width':'280px','height':'20px'}} value={this.state.val} onChange={this.handleChange1} />
                                             </label>
-                                            &nbsp;&nbsp;<input type="submit" value="Post" />
+                                            &nbsp;&nbsp;<input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                         </form>
                                     </AccordionDetails>
                                 </Accordion>

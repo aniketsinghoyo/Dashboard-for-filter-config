@@ -67,7 +67,7 @@ export default class Tags extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles,col:false,
             id:'',
             val1:'',val2:''
         }
@@ -84,22 +84,22 @@ export default class Tags extends React.Component {
     handleChange1= (event,key,keys) => {
         let x=this.state.tile;
         x[key][keys][event.target.name]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
     }
     handleChange2= (event,key,keys,keyss) => {
         let x=this.state.tile;
         x[key][keys][event.target.name][keyss]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
 
     }
     handleChange3= (event) => {
-     this.setState({id:event.target.value});
+     this.setState({id:event.target.value,col:true});
     }
     handleChange4= (event) => {
-        this.setState({val1:event.target.value});
+        this.setState({val1:event.target.value,col:true});
     }
     handleChange5= (event) => {
-        this.setState({val2:event.target.value});
+        this.setState({val2:event.target.value,col:true});
     }
 
     handleSubmit=(event)=> {
@@ -111,7 +111,7 @@ export default class Tags extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -137,7 +137,7 @@ export default class Tags extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -153,7 +153,7 @@ export default class Tags extends React.Component {
         // }));
         // x[this.state.key]=result;
         x[this.state.key]=x[this.state.key].filter((drink, index) => index != keys);
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[keys]);
     }
 
@@ -164,7 +164,7 @@ export default class Tags extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -199,14 +199,14 @@ export default class Tags extends React.Component {
 
                                                 </div>
                                                 <form onSubmit={this.handleSubmit}>
-                                                    <input type="submit" value="Post" />
+                                                    <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                                 </form>
                                             </Typography>
                                         </AccordionDetails>
                                     </Accordion>
                                 )
                                 }<form onSubmit={this.handleSubmit}><br/>
-                                <input type="submit" value="Post" /><br/><br/>
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" /><br/><br/>
                             </form>
                                 <Accordion>
                                     <AccordionSummary>
@@ -238,7 +238,7 @@ export default class Tags extends React.Component {
 
                                             </div>
 
-                                                <input type="submit" value="Add & Post" />
+                                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Add & Post" />
                                             </form>
                                         </Typography>
                                     </AccordionDetails>

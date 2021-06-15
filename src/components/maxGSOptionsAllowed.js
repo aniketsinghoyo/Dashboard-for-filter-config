@@ -67,7 +67,7 @@ export default class Maxgs extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles,col:false,
             nam:'',
             val:''
         }
@@ -85,13 +85,13 @@ export default class Maxgs extends React.Component {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys]);
     }
     handleChange1= (event) => {
         let x=this.state.tile;
         x[this.state.key]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
     }
 
     handleSubmit=(event)=> {
@@ -102,7 +102,7 @@ export default class Maxgs extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -135,14 +135,14 @@ export default class Maxgs extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
                             <div>
                                 <form onSubmit={this.handleSubmit}>
                                 <input type="text" name="" style={{'width':'60px','height':'20px'}} value={tile[key]} onChange={this.handleChange1}/>
-                                   &nbsp;&nbsp; <input type="submit" value="Post" />
+                                   &nbsp;&nbsp; <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                 </form>
                             </div>
                         </Typography>

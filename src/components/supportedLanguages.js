@@ -67,7 +67,7 @@ export default class SupportedLang extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles,col:false,
             val:''
         }
     }
@@ -82,7 +82,7 @@ export default class SupportedLang extends React.Component {
     }
 
     handleChange=(event)=>{
-        this.setState({val: event.target.value});
+        this.setState({val: event.target.value,col:true});
     }
 
     handleSubmit=(event)=> {
@@ -93,7 +93,7 @@ export default class SupportedLang extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -104,14 +104,15 @@ export default class SupportedLang extends React.Component {
         //alert('A name was submitted: ');
         event.preventDefault();
         let x=this.state.tile;
-        x[this.state.key].push(this.state.val);
+        if(this.state.val.length!=0){
+        x[this.state.key].push(this.state.val);}
         this.setState({tile:x});
         axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",this.state.tile,
             {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -134,7 +135,7 @@ export default class SupportedLang extends React.Component {
         // // }));
         x[this.state.key]=x[this.state.key].filter((drink, index) => index != keys);
 
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[this.state.key]);
     }
 
@@ -145,7 +146,7 @@ export default class SupportedLang extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -157,7 +158,7 @@ export default class SupportedLang extends React.Component {
                                     )}
                             </div>
                             <form onSubmit={this.handleSubmit}>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                         </Typography>
                     </AccordionDetails>
@@ -170,7 +171,7 @@ export default class SupportedLang extends React.Component {
                                 <label>
                                     <input type name="" value={this.state.val} style={{'width':"60px",'height':'20px'}} onChange={this.handleChange} />
                                 </label>
-                                &nbsp;&nbsp;<input type="submit" value="Post" />
+                                &nbsp;&nbsp;<input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                         </AccordionDetails>
                     </Accordion>

@@ -67,11 +67,13 @@ export default class Country extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles, col:false,
             kay:'',
             val1:'',val2:'',val3:'',val4:'',val5:'',
             val6:'', val7:'', val8:'',val9:'',val10:'',
-            val11:'',val12:''
+            val11:'',val12:'',val13:'',val14:'',val15:'',val16:'',val17:'',
+            val18:'', val19:'', val20:'',val21:'',val22:'',
+            val23:'',val24:''
         }
     }
     generateData(data) {
@@ -87,21 +89,21 @@ export default class Country extends React.Component {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys][keyss][keysss][keyssss][keysssss][keyssssss]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys][keyss][keysss]);
     }
     handleChange2(event,key,keys,keyss,keysss,keyssss,keysssss) {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys][keyss][keysss][keyssss][keysssss]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys][keyss][keysss]);
     }
     handleChange3(event,key,keys,keyss,keysss,keyssss) {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys][keyss][keysss][keyssss]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys][keyss][keysss]);
     }
     handleSubmit=(event)=> {
@@ -112,7 +114,7 @@ export default class Country extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -120,7 +122,7 @@ export default class Country extends React.Component {
         })
     }
     handleChangek = (event)=>{
-        this.setState({kay: event.target.value});
+        this.setState({kay: event.target.value,col:true});
     }
     // handleChange1 = (event)=>{
     //     this.setState({val1: event.target.value});
@@ -132,31 +134,67 @@ export default class Country extends React.Component {
     //     this.setState({val3: event.target.value});
     // }
     handleChange4 = (event)=>{
-        this.setState({val4: event.target.value});
+        this.setState({val4: event.target.value,col:true});
     }
     handleChange5 = (event)=>{
-        this.setState({val5: event.target.value});
+        this.setState({val5: event.target.value,col:true});
     }
     handleChange6 = (event)=>{
-        this.setState({val6: event.target.value});
+        this.setState({val6: event.target.value,col:true});
     }
     handleChange7 = (event)=>{
-        this.setState({val7: event.target.value});
+        this.setState({val7: event.target.value,col:true});
     }
     handleChange8 = (event)=>{
-        this.setState({val8: event.target.value});
+        this.setState({val8: event.target.value,col:true});
     }
     handleChange9 = (event)=>{
-        this.setState({val9: event.target.value});
+        this.setState({val9: event.target.value,col:true});
     }
     handleChange10 = (event)=> {
-        this.setState({val10: event.target.value});
+        this.setState({val10: event.target.value,col:true});
     }
     handleChange11 = (event)=> {
-        this.setState({val11: event.target.value});
+        this.setState({val11: event.target.value,col:true});
     }
     handleChange12 = (event)=> {
-        this.setState({val12: event.target.value});
+        this.setState({val12: event.target.value,col:true});
+    }
+    handleChange13 = (event)=> {
+        this.setState({val13: event.target.value,col:true});
+    }
+    handleChange14 = (event)=> {
+        this.setState({val14: event.target.value,col:true});
+    }
+    handleChange15 = (event)=> {
+        this.setState({val15: event.target.value,col:true});
+    }
+    handleChange16 = (event)=> {
+        this.setState({val16: event.target.value,col:true});
+    }
+    handleChange17 = (event)=> {
+        this.setState({val17: event.target.value,col:true});
+    }
+    handleChange18 = (event)=> {
+        this.setState({val18: event.target.value,col:true});
+    }
+    handleChange19 = (event)=> {
+        this.setState({val19: event.target.value,col:true});
+    }
+    handleChange20 = (event)=> {
+        this.setState({val20: event.target.value,col:true});
+    }
+    handleChange21 = (event)=> {
+        this.setState({val21: event.target.value,col:true});
+    }
+    handleChange22 = (event)=> {
+        this.setState({val22: event.target.value,col:true});
+    }
+    handleChange23 = (event)=> {
+        this.setState({val23: event.target.value,col:true});
+    }
+    handleChange24 = (event)=> {
+        this.setState({val24: event.target.value, col: true});
     }
 
     handleSubmit1=(event)=> {
@@ -164,46 +202,94 @@ export default class Country extends React.Component {
         event.preventDefault();
         let x=this.state.tile;
         x[this.state.key][this.state.kay]={};
-        x[this.state.key][this.state.kay]['DISCOVER_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['enabled']=this.state.val1;
-        x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['priority']=this.state.val2;
-        x[this.state.key][this.state.kay]['NEARBY_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['enabled']=this.state.val3;
-        x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['priority']=this.state.val4;
-        x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['enabled']=this.state.val5;
-        x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['priority']=this.state.val6;
-        x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['enabled']=this.state.val7;
-        x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['priority']=this.state.val8;
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['enabled']=this.state.val9;
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['priority']=this.state.val10;
-        x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['enabled']=this.state.val11;
-        x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['priority']=this.state.val12;
-        this.setState({tile:x});
+        if(this.state.kay.length!=0) {
+            x[this.state.key][this.state.kay]['countryWidgetConfig']={};
+            x[this.state.key][this.state.kay]['countryWidgetConfig']['TAG_FILTER_WIDGET'] = {};
+            x[this.state.key][this.state.kay]['countryWidgetConfig']['TAG_FILTER_WIDGET']['priorityWiseFilterName'] = {};
+            if(this.state.val4.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['TAG_FILTER_WIDGET']['priorityWiseFilterName']['1'] = this.state.val4;
+            }
+            if(this.state.val5.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['TAG_FILTER_WIDGET']['priorityWiseFilterName']['2'] = this.state.val5;
+            }
+            if(this.state.val6.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['TAG_FILTER_WIDGET']['priorityWiseFilterName']['3'] = this.state.val6;
+            }
+            x[this.state.key][this.state.kay]['countryWidgetConfig']['TAG_FILTER_WIDGET']['enabled'] = this.state.val7;
 
-        // axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",x,
-        //     {
-        //
-        //         headers: {  'x-api-key':'DemoKeyForDemoClient',
-        //             'oyo-client':'demo'} })
-        //     .then(response=>{ console.log("hari ke charno me pranaam");
-        //     })
-        //     .catch(error=>{
-        //         console.log("vffdbgfhgnbvcv");
-        //         console.log(error);
-        // })
+        }
+        if(this.state.val8.length!=0) {
+            x[this.state.key][this.state.kay]['countryWidgetConfig']['PROPERTY_TYPE_FILTER_WIDGET'] = {};
+            x[this.state.key][this.state.kay]['countryWidgetConfig']['PROPERTY_TYPE_FILTER_WIDGET']['priorityWiseFilterName'] = {};
+            if(this.state.val8.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['PROPERTY_TYPE_FILTER_WIDGET']['priorityWiseFilterName']['1'] = this.state.val8;
+            }
+            if(this.state.val9.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['PROPERTY_TYPE_FILTER_WIDGET']['priorityWiseFilterName']['2'] = this.state.val9;
+            }
+            if(this.state.val10.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['PROPERTY_TYPE_FILTER_WIDGET']['priorityWiseFilterName']['3'] = this.state.val10;
+            }
+            x[this.state.key][this.state.kay]['countryWidgetConfig']['PROPERTY_TYPE_FILTER_WIDGET']['enabled'] = this.state.val11;
+
+        }
+        if(this.state.val12.length!=0) {
+            x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET'] = {};
+            x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['priorityWiseFilterName'] = {};
+            if(this.state.val12.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['priorityWiseFilterName']['1'] = this.state.val12;
+            }
+            if(this.state.val13.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['priorityWiseFilterName']['2'] = this.state.val13;
+            }
+            if(this.state.val14.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['priorityWiseFilterName']['3'] = this.state.val14;
+            }
+            if(this.state.val15.length!=0) {
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['priorityWiseFilterName']['4'] = this.state.val15;
+            }
+            if(this.state.val16.length!=0){
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['en'] = {};
+            }
+            if(this.state.val16.length!=0){
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['en'][this.state.val16] = this.state.val17;
+            }
+            if(this.state.val18.length!=0){
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['en'][this.state.val18] = this.state.val19;
+            }
+            if(this.state.val20.length!=0){
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['en'][this.state.val20] = this.state.val21
+            }
+            if(this.state.val22.length!=0){
+                x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['en'][this.state.val22] = this.state.val23;
+            }
+
+            x[this.state.key][this.state.kay]['countryWidgetConfig']['AMENITY_FILTER_WIDGET']['enabled'] = this.state.val24;
+
+        }
+        this.setState({tile:x,col:false});
+
+        axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",x,
+            {
+
+                headers: {  'x-api-key':'DemoKeyForDemoClient',
+                    'oyo-client':'demo'} })
+            .then(response=>{ console.log("hari ke charno me pranaam");alert('posted successfully...');this.setState({col:false});
+            })
+            .catch(error=>{
+                alert('someething went wrong...');
+                console.log(error);
+        })
     }
     delete(keys)
     {
         let x=this.state.tile;
-        var result = JSON.parse(JSON.stringify(this.state.tile[this.state.key], function(key, value) {
-            return key !== keys ? value : undefined;
-        }));
-        x[this.state.key]=result;
-        this.setState({tile:x});
+        // var result = JSON.parse(JSON.stringify(this.state.tile[this.state.key], function(key, value) {
+        //     return key !== keys ? value : undefined;
+        // }));
+        delete x[this.state.key][keys];
+        // x[this.state.key]=result;
+        this.setState({tile:x,col:true});
     }
 
     render() {
@@ -213,7 +299,7 @@ export default class Country extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -301,7 +387,7 @@ export default class Country extends React.Component {
 
                                                                                                 }
                                                                                             </div>
-                                                                                            <input type="submit" value="Post" />
+                                                                                            <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                                                                         </form>
                                                                                         </Typography>
                                                                                     </AccordionDetails>
@@ -324,11 +410,63 @@ export default class Country extends React.Component {
                                     )
                                 }
                                 <form onSubmit={this.handleSubmit}>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                             </div>
                         </Typography>
                     </AccordionDetails>
+                    <Accordion>
+                        <AccordionSummary>
+                            <Typography><b>Add</b></Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <form onSubmit={this.handleSubmit1}>
+                                <label>
+
+                                    key:<input type="text" name="kay" style={{'width':'28px'}} value={this.state.kay} onChange={this.handleChangek} /><br/>
+                                </label>
+                                <Typography><b>countryWidgetConfig</b></Typography>
+                                <label>
+                                   <pre> <b>TAG_FILTER_WIDGET :</b><br/>
+                                   <b>priorityWiseFilterName:</b><br/>
+                                    1 : <input type="text" name="1" value={this.state.val4} onChange={this.handleChange4} /><br/>
+                                    2 : <input type="text" name="2" value={this.state.val5} onChange={this.handleChange5} /><br/>
+                                    3 : <input type="text" name="3" value={this.state.val6} onChange={this.handleChange6} /><br/>
+
+                                    enabled : <input type="text" name="priority" value={this.state.val7} onChange={this.handleChange7} /><br/><br/><br/>
+
+                                    <b>PROPERTY_TYPE_FILTER_WIDGET :</b><br/>
+                                    <b>priorityWiseFilterName : </b><br/>
+                                    1 : <input type="text" name="1" value={this.state.val8} onChange={this.handleChange8} /><br/>
+                                    2 : <input type="text" name="2" value={this.state.val9} onChange={this.handleChange9} /><br/>
+                                    3 : <input type="text" name="3" value={this.state.val10} onChange={this.handleChange10} /><br/>
+
+                                    enabled : <input type="text" name="priority" value={this.state.val11} onChange={this.handleChange11} /><br/><br/><br/>
+
+                                       <b>AMENITY_FILTER_WIDGET :</b><br/>
+                                       <b>priorityWiseFilterName : </b><br/>
+                                    1 : <input type="text" name="1" value={this.state.val12} onChange={this.handleChange12} /><br/>
+                                    2 : <input type="text" name="2" value={this.state.val13} onChange={this.handleChange13} /><br/>
+                                    3 : <input type="text" name="3" value={this.state.val14} onChange={this.handleChange14} /><br/>
+                                    4 : <input type="text" name="4" value={this.state.val15} onChange={this.handleChange15} /><br/>
+                                       <b>languageWiseFilterWiseDisplayHeader</b><br/>
+                                       <b>en :</b> <br/><br/>
+                                       <input type="text" name="en" style={{'width':'28px'}} value={this.state.val16} onChange={this.handleChange16} />&nbsp;:&nbsp;
+                                       <input type="text" name="en" style={{'width':'70px'}} value={this.state.val17} onChange={this.handleChange17} /><br/>
+                                       <input type="text" name="en" style={{'width':'28px'}} value={this.state.val18} onChange={this.handleChange18} />&nbsp;:&nbsp;
+                                       <input type="text" name="en" style={{'width':'70px'}} value={this.state.val19} onChange={this.handleChange19} /><br/>
+                                       <input type="text" name="en" style={{'width':'28px'}} value={this.state.val20} onChange={this.handleChange20} />&nbsp;:&nbsp;
+                                       <input type="text" name="en" style={{'width':'70px'}} value={this.state.val21} onChange={this.handleChange21} /><br/>
+                                       <input type="text" name="en" style={{'width':'28px'}} value={this.state.val22} onChange={this.handleChange22} />&nbsp;:&nbsp;
+                                       <input type="text" name="en" style={{'width':'70px'}} value={this.state.val23} onChange={this.handleChange23} /><br/><br/>
+                                       enabled : <input type="text" style={{'width':'50px'}} name="enabled" value={this.state.val24} onChange={this.handleChange24} /><br/><br/><br/>
+
+                                </pre>
+                                </label>
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
+                            </form>
+                        </AccordionDetails>
+                    </Accordion>
                 </Accordion>
             </div>
 

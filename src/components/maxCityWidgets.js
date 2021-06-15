@@ -68,7 +68,7 @@ export default class MaxCity extends React.Component {
         this.state={
             key:this.props.keys,
             tile:this.props.tiles,
-
+            col:false,
         }
     }
     generateData(data) {
@@ -84,7 +84,7 @@ export default class MaxCity extends React.Component {
     handleChange= (event,key) => {
         let x=this.state.tile;
         x[key]=parseInt(event.target.value);
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
     }
 
     handleSubmit=(event)=> {
@@ -95,7 +95,7 @@ export default class MaxCity extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -113,7 +113,7 @@ export default class MaxCity extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -123,7 +123,7 @@ export default class MaxCity extends React.Component {
                                 }
                             </div>
                             <form onSubmit={this.handleSubmit}>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
 
 

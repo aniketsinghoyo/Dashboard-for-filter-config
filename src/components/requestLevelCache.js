@@ -67,7 +67,7 @@ export default class RequestLevel extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles,col:false,
             val:''
         }
     }
@@ -84,7 +84,7 @@ export default class RequestLevel extends React.Component {
     handleChange=(event,key,keys)=>{
         let x=this.state.tile;
         x[key][keys]=event.target.value;
-        this.setState({tile: x});
+        this.setState({tile: x,col:true});
     }
 
     handleSubmit1=(event)=> {
@@ -101,7 +101,7 @@ export default class RequestLevel extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -124,7 +124,7 @@ export default class RequestLevel extends React.Component {
         // // }));
         x[this.state.key]=x[this.state.key].filter((drink, index) => index != keys);
 
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[this.state.key]);
     }
 
@@ -135,7 +135,7 @@ export default class RequestLevel extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -149,7 +149,7 @@ export default class RequestLevel extends React.Component {
                                 )}
                             </div>
                             <form onSubmit={this.handleSubmit}>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                         </Typography>
                     </AccordionDetails>

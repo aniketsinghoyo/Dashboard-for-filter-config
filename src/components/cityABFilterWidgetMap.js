@@ -67,7 +67,7 @@ export default class CityAB extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles, col:false,
             kay:'',
             val1:'',val2:'',val3:'',val4:'',val5:'',
             val6:'', val7:'', val8:'',val9:'',val10:'',
@@ -87,7 +87,7 @@ export default class CityAB extends React.Component {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys][keyss][keysss][event.target.name]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys][keyss][keysss]);
     }
     handleSubmit=(event)=> {
@@ -98,76 +98,79 @@ export default class CityAB extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});
+            alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
-                console.log(error);
+                console.log(error);alert('posted successfully');
         })
     }
     handleChangek = (event)=>{
-        this.setState({kay: event.target.value});
+        this.setState({kay: event.target.value,col:true});
     }
     handleChange1 = (event)=>{
-        this.setState({val1: event.target.value});
+        this.setState({val1: event.target.value,col:true});
     }
     handleChange2 = (event)=>{
-        this.setState({val2: event.target.value});
+        this.setState({val2: event.target.value,col:true});
     }
     handleChange3 = (event)=>{
-        this.setState({val3: event.target.value});
+        this.setState({val3: event.target.value,col:true});
     }
     handleChange4 = (event)=>{
-        this.setState({val4: event.target.value});
+        this.setState({val4: event.target.value,col:true});
     }
     handleChange5 = (event)=>{
-        this.setState({val5: event.target.value});
+        this.setState({val5: event.target.value,col:true});
     }
     handleChange6 = (event)=>{
-        this.setState({val6: event.target.value});
+        this.setState({val6: event.target.value,col:true});
     }
     handleChange7 = (event)=>{
-        this.setState({val7: event.target.value});
+        this.setState({val7: event.target.value,col:true});
     }
     handleChange8 = (event)=>{
-        this.setState({val8: event.target.value});
+        this.setState({val8: event.target.value,col:true});
     }
     handleChange9 = (event)=>{
-        this.setState({val9: event.target.value});
+        this.setState({val9: event.target.value,col:true});
     }
     handleChange10 = (event)=> {
-        this.setState({val10: event.target.value});
+        this.setState({val10: event.target.value,col:true});
     }
     handleChange11 = (event)=> {
-        this.setState({val11: event.target.value});
+        this.setState({val11: event.target.value,col:true});
     }
     handleChange12 = (event)=> {
-        this.setState({val12: event.target.value});
+        this.setState({val12: event.target.value,col:true});
     }
 
     handleSubmit1=(event)=> {
         //alert('A name was submitted: ');
         event.preventDefault();
         let x=this.state.tile;
-        x[this.state.key][this.state.kay]={};
-        x[this.state.key][this.state.kay]['DISCOVER_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['enabled']=this.state.val1;
-        x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['priority']=parseInt(this.state.val2);
-        x[this.state.key][this.state.kay]['NEARBY_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['enabled']=this.state.val3;
-        x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['priority']=parseInt(this.state.val4);
-        x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['enabled']=this.state.val5;
-        x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['priority']=parseInt(this.state.val6);
-        x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['enabled']=this.state.val7;
-        x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['priority']=parseInt(this.state.val8);
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['enabled']=this.state.val9;
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['priority']=parseInt(this.state.val10);
-        x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET']=[{}];
-        x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['enabled']=this.state.val11;
-        x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['priority']=parseInt(this.state.val12);
+        if(this.state.kay.length!=0) {
+            x[this.state.key][this.state.kay] = {};
+            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'] = [{}];
+            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['enabled'] = this.state.val1;
+            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['priority'] = parseInt(this.state.val2);
+            x[this.state.key][this.state.kay]['NEARBY_WIDGET'] = [{}];
+            x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['enabled'] = this.state.val3;
+            x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['priority'] = parseInt(this.state.val4);
+            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'] = [{}];
+            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['enabled'] = this.state.val5;
+            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['priority'] = parseInt(this.state.val6);
+            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'] = [{}];
+            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['enabled'] = this.state.val7;
+            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['priority'] = parseInt(this.state.val8);
+            x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'] = [{}];
+            x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['enabled'] = this.state.val9;
+            x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['priority'] = parseInt(this.state.val10);
+            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'] = [{}];
+            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['enabled'] = this.state.val11;
+            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['priority'] = parseInt(this.state.val12);
+        }
         this.setState({tile:x});
 
         axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",this.state.tile,
@@ -175,7 +178,7 @@ export default class CityAB extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -189,7 +192,7 @@ export default class CityAB extends React.Component {
             return key !== keys ? value : undefined;
         }));
         x[this.state.key]=result;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
     }
 
     render() {
@@ -199,7 +202,7 @@ export default class CityAB extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     {this.generateData(tile[key]).map(keys=>
                         <Accordion>
@@ -237,7 +240,7 @@ export default class CityAB extends React.Component {
                                         )
                                         }
                                         <form onSubmit={this.handleSubmit}>
-                                            <input type="submit" value="Post" />
+                                            <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                         </form>
                                     </div>
                                 </Typography>
@@ -246,7 +249,7 @@ export default class CityAB extends React.Component {
                     )
                     }
                     <br/><form onSubmit={this.handleSubmit}>
-                    <input type="submit" value="Post" />
+                    <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                 </form><br/>
                     <Accordion>
                         <AccordionSummary>
@@ -279,7 +282,7 @@ export default class CityAB extends React.Component {
                                     priority: <input type="text" name="priority" style={{'width':'70px','height':'20px'}} value={this.state.val12} onChange={this.handleChange12} /><br/>
                                 </pre>
                                 </label>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                         </AccordionDetails>
                     </Accordion>

@@ -67,7 +67,7 @@ export default class Discover extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles, col:false,
             nam:'',
             val:''
         }
@@ -85,20 +85,21 @@ export default class Discover extends React.Component {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys]);
     }
     handleChange1= (event) => {
-        this.setState({nam: event.target.value});
+        this.setState({nam: event.target.value,col:true});
     }
     handleChange2 = (event)=> {
-        this.setState({val: event.target.value});
+        this.setState({val: event.target.value,col:true});
     }
     handleSubmit1=(event)=> {
         //alert('A name was submitted: ');
         event.preventDefault();
         let x=this.state.tile;
-        x[this.state.key][this.state.nam]=this.state.val;
+        if(this.state.nam.length!=0){
+        x[this.state.key][this.state.nam]=this.state.val;}
         this.setState({tile:x});
         console.log(this.state.tile[this.state.key][this.state.nam]);
         axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",this.state.tile,
@@ -106,7 +107,7 @@ export default class Discover extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -121,7 +122,7 @@ export default class Discover extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -135,7 +136,7 @@ export default class Discover extends React.Component {
             return key !== keys ? value : undefined;
         }));
         x[this.state.key]=result;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[this.state.key]);
     }
 
@@ -146,7 +147,7 @@ export default class Discover extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -157,7 +158,7 @@ export default class Discover extends React.Component {
                                     <pre><b>{keys} : {tile[key][keys]} <button onClick={this.delete.bind(this,keys)}>Delete</button></b></pre>
                                 )}
                                 <form onSubmit={this.handleSubmit}>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                                 <Accordion>
                                     <AccordionSummary>
@@ -166,11 +167,11 @@ export default class Discover extends React.Component {
                                     <AccordionDetails>
                                         <form onSubmit={this.handleSubmit1}>
                                             <label>
-                                                key : value
+                                                key :
                                                 <input type="text" style={{'width':'70px'}} name="" value={this.state.name} onChange={this.handleChange1} />
-                                                <input type="text" style={{'width':'70px'}} name="" value={this.state.val} onChange={this.handleChange2} />
-                                            </label><br/>
-                                            <input type="submit" value="Post" />
+                                                <br/>value: <input type="text" style={{'width':'70px'}} name="" value={this.state.val} onChange={this.handleChange2} />
+                                            </label><br/><br/>
+                                            <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                         </form>
                                     </AccordionDetails>
                                 </Accordion>

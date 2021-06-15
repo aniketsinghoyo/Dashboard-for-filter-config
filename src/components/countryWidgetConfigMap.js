@@ -67,7 +67,7 @@ export default class CountryWid extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles, col:false,
             kay:'',
             val1:'',val2:'',val3:'',val4:'',val5:'',
             val6:'', val7:'', val8:'',val9:'',val10:'',
@@ -75,7 +75,7 @@ export default class CountryWid extends React.Component {
             val18:'', val19:'', val20:'',val21:'',val22:'',
             val23:'',val24:'',val25:'',val26:'',val27:'',val28:'',val29:'',
             val30:'', val31:'', val32:'',val33:'',val34:'',
-            val135:'',val136:'',val37:'',val38:'',val39:'',val40:'',val41:'',
+            val35:'',val36:'',val37:'',val38:'',val39:'',val40:'',val41:'',
             val42:'', val43:'', val44:'',val45:'',val46:'',
             val47:'',val48:'',val49:'',val50:'',val51:'',val52:'',val53:'',
             val54:'', val55:'', val56:'',val57:'',val58:'',
@@ -98,14 +98,14 @@ export default class CountryWid extends React.Component {
         let x=this.state.tile;
         x[key][keys][keyss][0][event.target.name]=event.target.value;
 
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys][keyss][0][event.target.name]);
     }
     handleChangel(event,key,keys,keyss,keysss) {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys][keyss][0][event.target.name][keysss]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys][keyss][0][event.target.name]);
     }
     handleSubmit=(event)=> {
@@ -116,410 +116,412 @@ export default class CountryWid extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
-                alert('something went wrong... ');
+                alert('something went wrong... ');alert('posted successfully');
                 console.log(error);
         })
     }
     handleChangek = (event)=>{
-        this.setState({kay: event.target.value});
+        this.setState({kay: event.target.value,col:true});
     }
     handleChange1 = (event)=>{
-        this.setState({val1: event.target.value});
+        this.setState({val1: event.target.value,col:true});
     }
     handleChange2 = (event)=>{
-        this.setState({val2: event.target.value});
+        this.setState({val2: event.target.value,col:true});
     }
     handleChange3 = (event)=>{
-        this.setState({val3: event.target.value});
+        this.setState({val3: event.target.value,col:true});
     }
     handleChange4 = (event)=>{
-        this.setState({val4: event.target.value});
+        this.setState({val4: event.target.value,col:true});
     }
     handleChange5 = (event)=>{
-        this.setState({val5: event.target.value});
+        this.setState({val5: event.target.value,col:true});
     }
     handleChange6 = (event)=>{
-        this.setState({val6: event.target.value});
+        this.setState({val6: event.target.value,col:true});
     }
     handleChange7 = (event)=>{
-        this.setState({val7: event.target.value});
+        this.setState({val7: event.target.value,col:true});
     }
     handleChange8 = (event)=>{
-        this.setState({val8: event.target.value});
+        this.setState({val8: event.target.value,col:true});
     }
     handleChange9 = (event)=>{
-        this.setState({val9: event.target.value});
+        this.setState({val9: event.target.value,col:true});
     }
     handleChange10 = (event)=> {
-        this.setState({val10: event.target.value});
+        this.setState({val10: event.target.value,col:true});
     }
     handleChange11 = (event)=> {
-        this.setState({val11: event.target.value});
+        this.setState({val11: event.target.value,col:true});
     }
     handleChange12 = (event)=> {
-        this.setState({val12: event.target.value});
+        this.setState({val12: event.target.value,col:true});
     }
     handleChange13 = (event)=> {
-        this.setState({val13: event.target.value});
+        this.setState({val13: event.target.value,col:true});
     }
     handleChange14 = (event)=> {
-        this.setState({val14: event.target.value});
+        this.setState({val14: event.target.value,col:true});
     }
     handleChange15 = (event)=> {
-        this.setState({val15: event.target.value});
+        this.setState({val15: event.target.value,col:true});
     }
     handleChange16 = (event)=> {
-        this.setState({val16: event.target.value});
+        this.setState({val16: event.target.value,col:true});
     }
     handleChange17 = (event)=> {
-        this.setState({val17: event.target.value});
+        this.setState({val17: event.target.value,col:true});
     }
     handleChange18 = (event)=> {
-        this.setState({val18: event.target.value});
+        this.setState({val18: event.target.value,col:true});
     }
     handleChange19 = (event)=> {
-        this.setState({val19: event.target.value});
+        this.setState({val19: event.target.value,col:true});
     }
     handleChange20 = (event)=> {
-        this.setState({val20: event.target.value});
+        this.setState({val20: event.target.value,col:true});
     }
     handleChange21 = (event)=> {
-        this.setState({val21: event.target.value});
+        this.setState({val21: event.target.value,col:true});
     }
     handleChange22 = (event)=> {
-        this.setState({val22: event.target.value});
+        this.setState({val22: event.target.value,col:true});
     }
     handleChange23 = (event)=> {
-        this.setState({val23: event.target.value});
+        this.setState({val23: event.target.value,col:true});
     }
     handleChange24 = (event)=> {
-        this.setState({val24: event.target.value});
+        this.setState({val24: event.target.value,col:true});
     }
     handleChange25 = (event)=> {
-        this.setState({val25: event.target.value});
+        this.setState({val25: event.target.value,col:true});
     }
     handleChange26 = (event)=> {
-        this.setState({val26: event.target.value});
+        this.setState({val26: event.target.value,col:true});
     }
     handleChange27 = (event)=> {
-        this.setState({val27: event.target.value});
+        this.setState({val27: event.target.value,col:true});
     }
     handleChange28 = (event)=> {
-        this.setState({val28: event.target.value});
+        this.setState({val28: event.target.value,col:true});
     }
     handleChange29 = (event)=> {
-        this.setState({val29: event.target.value});
+        this.setState({val29: event.target.value,col:true});
     }
     handleChange30 = (event)=> {
-        this.setState({val30: event.target.value});
+        this.setState({val30: event.target.value,col:true});
     }
     handleChange31 = (event)=> {
-        this.setState({val31: event.target.value});
+        this.setState({val31: event.target.value,col:true});
     }
     handleChange32 = (event)=> {
-        this.setState({val32: event.target.value});
+        this.setState({val32: event.target.value,col:true});
     }
     handleChange33 = (event)=> {
-        this.setState({val33: event.target.value});
+        this.setState({val33: event.target.value,col:true});
     }
     handleChange34 = (event)=> {
-        this.setState({val34: event.target.value});
+        this.setState({val34: event.target.value,col:true});
     }
     handleChange35 = (event)=> {
-        this.setState({val35: event.target.value});
+        this.setState({val35: event.target.value,col:true});
     }
     handleChange36 = (event)=> {
-        this.setState({val36: event.target.value});
+        this.setState({val36: event.target.value,col:true});
     }
     handleChange37 = (event)=> {
-        this.setState({val37: event.target.value});
+        this.setState({val37: event.target.value,col:true});
     }
     handleChange38 = (event)=> {
-        this.setState({val38: event.target.value});
+        this.setState({val38: event.target.value,col:true});
     }
     handleChange39 = (event)=> {
-        this.setState({val39: event.target.value});
+        this.setState({val39: event.target.value,col:true});
     }
     handleChange40 = (event)=> {
-        this.setState({val40: event.target.value});
+        this.setState({val40: event.target.value,col:true});
     }
     handleChange41 = (event)=> {
-        this.setState({val41: event.target.value});
+        this.setState({val41: event.target.value,col:true});
     }
     handleChange42 = (event)=> {
-        this.setState({val42: event.target.value});
+        this.setState({val42: event.target.value,col:true});
     }
     handleChange43 = (event)=> {
-        this.setState({val43: event.target.value});
+        this.setState({val43: event.target.value,col:true});
     }
     handleChange44 = (event)=> {
-        this.setState({val44: event.target.value});
+        this.setState({val44: event.target.value,col:true});
     }
     handleChange45 = (event)=> {
-        this.setState({val45: event.target.value});
+        this.setState({val45: event.target.value,col:true});
     }
     handleChange46 =(event)=> {
-        this.setState({val46: event.target.value});
+        this.setState({val46: event.target.value,col:true});
     }
     handleChange47 = (event)=> {
-        this.setState({val47: event.target.value});
+        this.setState({val47: event.target.value,col:true});
     }
     handleChange48 = (event)=> {
-        this.setState({val48: event.target.value});
+        this.setState({val48: event.target.value,col:true});
     }
     handleChange49 = (event)=> {
-        this.setState({val49: event.target.value});
+        this.setState({val49: event.target.value,col:true});
     }
     handleChange50 = (event)=> {
-        this.setState({val50: event.target.value});
+        this.setState({val50: event.target.value,col:true});
     }
     handleChange51 = (event)=> {
-        this.setState({val51: event.target.value});
+        this.setState({val51: event.target.value,col:true});
     }
     handleChange52 = (event)=> {
-        this.setState({val52: event.target.value});
+        this.setState({val52: event.target.value,col:true});
     }
     handleChange53 = (event)=> {
-        this.setState({val53: event.target.value});
+        this.setState({val53: event.target.value,col:true});
     }
     handleChange54 = (event)=> {
-        this.setState({val54: event.target.value});
+        this.setState({val54: event.target.value,col:true});
     }
     handleChange55 = (event)=> {
-        this.setState({val55: event.target.value});
+        this.setState({val55: event.target.value,col:true});
     }
     handleChange56 = (event)=> {
-        this.setState({val56: event.target.value});
+        this.setState({val56: event.target.value,col:true});
     }
     handleChange57 = (event)=> {
-        this.setState({val57: event.target.value});
+        this.setState({val57: event.target.value,col:true});
     }
     handleChange58 = (event)=> {
-        this.setState({val58: event.target.value});
+        this.setState({val58: event.target.value,col:true});
     }
     handleChange59 = (event)=> {
-        this.setState({val59: event.target.value});
+        this.setState({val59: event.target.value,col:true});
     }
     handleChange60 = (event)=> {
-        this.setState({val60: event.target.value});
+        this.setState({val60: event.target.value,col:true});
     }
     handleChange61 = (event)=> {
-        this.setState({val61: event.target.value});
+        this.setState({val61: event.target.value,col:true});
     }
     handleChange62 = (event)=> {
-        this.setState({val62: event.target.value});
+        this.setState({val62: event.target.value,col:true});
     }
     handleChange63 = (event)=> {
-        this.setState({val63: event.target.value});
+        this.setState({val63: event.target.value,col:true});
     }
     handleChange64 = (event)=> {
-        this.setState({val64: event.target.value});
+        this.setState({val64: event.target.value,col:true});
     }
     handleChange65 = (event)=> {
-        this.setState({val65: event.target.value});
+        this.setState({val65: event.target.value,col:true});
     }
     handleChange66 = (event)=> {
-        this.setState({val66: event.target.value});
+        this.setState({val66: event.target.value,col:true});
     }
     handleChange67 = (event)=> {
-        this.setState({val67: event.target.value});
+        this.setState({val67: event.target.value,col:true});
     }
     handleChange68 = (event)=> {
-        this.setState({val68: event.target.value});
+        this.setState({val68: event.target.value,col:true});
     }
     handleChange69 = (event)=> {
-        this.setState({val69: event.target.value});
+        this.setState({val69: event.target.value,col:true});
     }
     handleChange70 = (event)=> {
-        this.setState({val70: event.target.value});
+        this.setState({val70: event.target.value,col:true});
     }
     handleChange71 = (event)=> {
-        this.setState({val71: event.target.value});
+        this.setState({val71: event.target.value,col:true});
     }
     handleChange72 = (event)=> {
-        this.setState({val72: event.target.value});
+        this.setState({val72: event.target.value,col:true});
     }
     handleChange73 = (event)=> {
-        this.setState({val73: event.target.value});
+        this.setState({val73: event.target.value,col:true});
     }
     handleChange74 = (event)=> {
-        this.setState({val74: event.target.value});
+        this.setState({val74: event.target.value,col:true});
     }
     handleChange75 = (event)=> {
-        this.setState({val75: event.target.value});
+        this.setState({val75: event.target.value,col:true});
     }
     handleChange76 = (event)=> {
-        this.setState({val76: event.target.value});
+        this.setState({val76: event.target.value,col:true});
     }
     handleChange77 = (event)=> {
-        this.setState({val77: event.target.value});
+        this.setState({val77: event.target.value,col:true});
     }
     handleChange78 = (event)=> {
-        this.setState({val78: event.target.value});
+        this.setState({val78: event.target.value,col:true});
     }
 
     handleSubmit1=(event)=> {
         alert('A name was submitted: ');
         event.preventDefault();
         let x = this.state.tile;
-        if (this.state.val1.length != 0) {
-            x[this.state.key][this.state.kay] = {};
-            x[this.state.key][this.state.kay]['NEARBY_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['itemCount'] = this.state.val1;
-            x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['maxWidgetCount'] = this.state.val2;
-            x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['enabled'] = this.state.val3;
-            x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['priority'] = this.state.val4;
-            x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val5;
-            x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val6;
-        }
-        if (this.state.val7.length != 0) {
-            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['itemCount'] = this.state.val7;
-            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['maxWidgetCount'] = this.state.val8;
-            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['enabled'] = this.state.val9;
-            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['priority'] = this.state.val10;
-            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val11;
-            x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val12;
-        }
-        if (this.state.val13.length != 0) {
-            x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'] = [{}];
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['itemCount'] = this.state.val13;
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val14;
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['enabled'] = this.state.val15;
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['priority'] = this.state.val16;
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val17;
-        x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val18;
-        }
-        if (this.state.val19.length != 0) {
-            x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['itemCount'] = this.state.val19;
-            x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val20;
-            x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['enabled'] = this.state.val21;
-            x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['priority'] = this.state.val22;
-            x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val23;
-            x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val24;
-        }
-        if (this.state.val25.length != 0) {
-            x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['itemCount'] = this.state.val25;
-            x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['maxWidgetCount'] = this.state.val26;
-            x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['enabled'] = this.state.val27;
-            x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['priority'] = this.state.val28;
-            x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val29;
-            x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val30;
-        }
-        if (this.state.val31.length != 0) {
-            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['itemCount'] = this.state.val31;
-            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val32;
-            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['enabled'] = this.state.val33;
-            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['priority'] = this.state.val34;
-            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val35;
-            x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val36;
-        }
-        if (this.state.val37.length != 0) {
-            x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['itemCount'] = this.state.val37;
-            x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val38;
-            x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['enabled'] = this.state.val39;
-            x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['priority'] = this.state.val40;
-            x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val41;
-            x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val42;
-        }
-        if (this.state.val43.length != 0) {
-            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['itemCount'] = this.state.val43;
-            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val44;
-            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['enabled'] = this.state.val45;
-            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['priority'] = this.state.val46;
-            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val47;
-            x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val48;
-        }
-        if (this.state.val49.length != 0) {
-            x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['itemCount'] = this.state.val49;
-            x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val50;
-            x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['enabled'] = this.state.val51;
-            x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['priority'] = this.state.val52;
-            x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val53;
-            x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val54;
-        }
-        if (this.state.val55.length != 0) {
-            x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['itemCount'] = this.state.val55;
-            x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val56;
-            x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['enabled'] = this.state.val57;
-            x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['priority'] = this.state.val58;
-            x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val59;
-            x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val60;
-        }
-        if (this.state.val61.length != 0) {
-            x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['itemCount'] = this.state.val61;
-            x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val62;
-            x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['enabled'] = this.state.val63;
-            x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['priority'] = this.state.val64;
-            x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val65;
-            x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val66;
-        }
-        if (this.state.val67.length != 0) {
-            x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['itemCount'] = this.state.val67;
-            x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val68;
-            x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['enabled'] = this.state.val69;
-            x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['priority'] = this.state.val70;
-            x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val71;
-            x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val72;
-        }
-        if (this.state.val73.length != 0) {
-            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'] = [{}];
-            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['itemCount'] = this.state.val73;
-            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['maxWidgetCount'] = this.state.val74;
-            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['enabled'] = this.state.val75;
-            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['priority'] = this.state.val76;
-            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
-            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val77;
-            x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val78;
+        if(this.state.kay.length!=0) {
+            if (this.state.val1.length != 0) {
+                x[this.state.key][this.state.kay] = {};
+                x[this.state.key][this.state.kay]['NEARBY_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['itemCount'] = this.state.val1;
+                x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['maxWidgetCount'] = this.state.val2;
+                x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['enabled'] = this.state.val3;
+                x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['priority'] = this.state.val4;
+                x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val5;
+                x[this.state.key][this.state.kay]['NEARBY_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val6;
+            }
+            if (this.state.val7.length != 0) {
+                x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['itemCount'] = this.state.val7;
+                x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['maxWidgetCount'] = this.state.val8;
+                x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['enabled'] = this.state.val9;
+                x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['priority'] = this.state.val10;
+                x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val11;
+                x[this.state.key][this.state.kay]['POPULAR_HOTELS_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val12;
+            }
+            if (this.state.val13.length != 0) {
+                x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['itemCount'] = this.state.val13;
+                x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val14;
+                x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['enabled'] = this.state.val15;
+                x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['priority'] = this.state.val16;
+                x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val17;
+                x[this.state.key][this.state.kay]['PRICE_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val18;
+            }
+            if (this.state.val19.length != 0) {
+                x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['itemCount'] = this.state.val19;
+                x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val20;
+                x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['enabled'] = this.state.val21;
+                x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['priority'] = this.state.val22;
+                x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val23;
+                x[this.state.key][this.state.kay]['PROPERTY_TYPE_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val24;
+            }
+            if (this.state.val25.length != 0) {
+                x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['itemCount'] = this.state.val25;
+                x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['maxWidgetCount'] = this.state.val26;
+                x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['enabled'] = this.state.val27;
+                x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['priority'] = this.state.val28;
+                x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val29;
+                x[this.state.key][this.state.kay]['DISCOUNT_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val30;
+            }
+            if (this.state.val31.length != 0) {
+                x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['itemCount'] = this.state.val31;
+                x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val32;
+                x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['enabled'] = this.state.val33;
+                x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['priority'] = this.state.val34;
+                x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val35;
+                x[this.state.key][this.state.kay]['TAG_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val36;
+            }
+            if (this.state.val37.length != 0) {
+                x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['itemCount'] = this.state.val37;
+                x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val38;
+                x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['enabled'] = this.state.val39;
+                x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['priority'] = this.state.val40;
+                x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val41;
+                x[this.state.key][this.state.kay]['RATING_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val42;
+            }
+            if (this.state.val43.length != 0) {
+                x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['itemCount'] = this.state.val43;
+                x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val44;
+                x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['enabled'] = this.state.val45;
+                x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['priority'] = this.state.val46;
+                x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val47;
+                x[this.state.key][this.state.kay]['LOCATION_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val48;
+            }
+            if (this.state.val49.length != 0) {
+                x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['itemCount'] = this.state.val49;
+                x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val50;
+                x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['enabled'] = this.state.val51;
+                x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['priority'] = this.state.val52;
+                x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val53;
+                x[this.state.key][this.state.kay]['POSTPAID_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val54;
+            }
+            if (this.state.val55.length != 0) {
+                x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['itemCount'] = this.state.val55;
+                x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val56;
+                x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['enabled'] = this.state.val57;
+                x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['priority'] = this.state.val58;
+                x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val59;
+                x[this.state.key][this.state.kay]['AMENITY_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val60;
+            }
+            if (this.state.val61.length != 0) {
+                x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['itemCount'] = this.state.val61;
+                x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val62;
+                x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['enabled'] = this.state.val63;
+                x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['priority'] = this.state.val64;
+                x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val65;
+                x[this.state.key][this.state.kay]['PROMOTED_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val66;
+            }
+            if (this.state.val67.length != 0) {
+                x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['itemCount'] = this.state.val67;
+                x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['maxWidgetCount'] = this.state.val68;
+                x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['enabled'] = this.state.val69;
+                x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['priority'] = this.state.val70;
+                x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val71;
+                x[this.state.key][this.state.kay]['WIZARD_FILTER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val72;
+            }
+            if (this.state.val73.length != 0) {
+                x[this.state.key][this.state.kay]['DISCOVER_WIDGET'] = [{}];
+                x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['itemCount'] = this.state.val73;
+                x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['maxWidgetCount'] = this.state.val74;
+                x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['enabled'] = this.state.val75;
+                x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['priority'] = this.state.val76;
+                x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['languageWiseDisplayHeader'] = {}
+                x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['languageWiseDisplayHeader']['en'] = this.state.val77;
+                x[this.state.key][this.state.kay]['DISCOVER_WIDGET'][0]['languageWiseDisplayHeader']['hi'] = this.state.val78;
+            }
         }
 
         this.setState({tile:x});
         console.log(this.state.tile[this.state.key])
 
-        // axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",x,
-        //     {
-        //
-        //         headers: {  'x-api-key':'DemoKeyForDemoClient',
-        //             'oyo-client':'demo'} })
-        //     .then(response=>{ console.log("hari ke charno me pranaam");
-        //     })
-        //     .catch(error=>{
-        //         console.log("vffdbgfhgnbvcv");
-        //         console.log(error);
-        // })
+        axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",x,
+            {
+
+                headers: {  'x-api-key':'DemoKeyForDemoClient',
+                    'oyo-client':'demo'} })
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
+            })
+            .catch(error=>{
+                alert('something went wrong...')
+                console.log(error);
+        })
     }
     delete(keys)
     {
         let x=this.state.tile;
-        var result = JSON.parse(JSON.stringify(this.state.tile[this.state.key], function(key, value) {
-            return key !== keys ? value : undefined;
-        }));
-        x[this.state.key]=result;
-        this.setState({tile:x});
+        // var result = JSON.parse(JSON.stringify(this.state.tile[this.state.key], function(key, value) {
+        //     return key !== keys ? value : undefined;
+        // }));
+        delete x[this.state.key][keys];
+        this.setState({tile:x,col:true});
     }
 
     render() {
@@ -529,7 +531,7 @@ export default class CountryWid extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails><div>
                     {this.generateData(tile[key]).map(keys=>
@@ -553,7 +555,7 @@ export default class CountryWid extends React.Component {
                                                                                 <br/>
                                                                                           maxWidgetCount: <input type="text" name="maxWidgetCount" style={{'width':'70px','height':'20px'}} value={tile[key][keys][keyss][0]['maxWidgetCount']} onChange={(event)=>this.handleChange(event,key,keys,keyss)}/>
                                                                                 <br/>
-                                                                                                        enabled: <input type="text" name="enabled" style={{'width':'70px','height':'20px'}} value={tile[key][keys][keyss][0]['enabled']?'true':'false'} onChange={(event)=>this.handleChange(event,key,keys,keyss)}/>
+                                                                                                        enabled: <input type="text" name="enabled" style={{'width':'70px','height':'20px'}} value={tile[key][keys][keyss][0]['enabled']} onChange={(event)=>this.handleChange(event,key,keys,keyss)}/>
                                                                                 <br/>
                                                                                                         priority: <input type="text" name="priority" style={{'width':'70px','height':'20px'}} value={tile[key][keys][keyss][0]['priority']} onChange={(event)=>this.handleChange(event,key,keys,keyss)}/>
                                                                                 <br/>
@@ -576,7 +578,7 @@ export default class CountryWid extends React.Component {
                                                                                             </pre>
 
                                                         </div>
-                                                            <input type="submit" value="Post" />
+                                                            <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                                         </form>
                                                     </Typography>
                                                 </AccordionDetails>
@@ -589,7 +591,7 @@ export default class CountryWid extends React.Component {
                             </AccordionDetails>
                         </Accordion>
                     )
-                    } <br/><form onSubmit={this.handleSubmit}><input type="submit" value="Post" />
+                    } <br/><form onSubmit={this.handleSubmit}><input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                     </form>
                         </div>
                         </AccordionDetails>
@@ -724,7 +726,7 @@ export default class CountryWid extends React.Component {
 
                                 </pre>
                                 </label>
-                                <input type="submit" value="Post" />
+                                <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                             </form>
                         </AccordionDetails>
                     </Accordion>

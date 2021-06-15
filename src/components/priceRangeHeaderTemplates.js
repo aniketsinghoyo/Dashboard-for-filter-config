@@ -66,7 +66,7 @@ export default class PriceRange extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            key:this.props.keys,
+            key:this.props.keys,col:false,
             tile:this.props.tiles
         }
     }
@@ -83,7 +83,7 @@ export default class PriceRange extends React.Component {
         console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys][keyss]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys][keyss]);
     }
     handleSubmit=(event)=>{
@@ -97,7 +97,7 @@ export default class PriceRange extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -113,7 +113,7 @@ export default class PriceRange extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -132,7 +132,7 @@ export default class PriceRange extends React.Component {
                                                         this.generateData(tile[key][keys]).map(keyss=>
                                                             <pre><b>{keyss} : <input type="text" name={keys} value={tile[key][keys][keyss]} style={{width: "380px"}} onChange={(event)=>this.handleChange(event,key,keys,keyss)}/></b></pre>
                                                         )}
-                                                    <input type="submit" value="Post"  />
+                                                    <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post"  />
 
                                                 </div></form>
                                             </Typography>

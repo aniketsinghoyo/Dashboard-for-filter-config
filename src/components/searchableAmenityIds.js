@@ -67,7 +67,7 @@ export default class SearchableAme extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles,col:false,
             nam:'',
             val:''
         }
@@ -83,7 +83,7 @@ export default class SearchableAme extends React.Component {
     }
 
     handleChange1= (event) => {
-        this.setState({val: event.target.value});
+        this.setState({val: event.target.value,col:true});
     }
     handleSubmit=(event)=> {
         //alert('A name was submitted: ');
@@ -93,7 +93,7 @@ export default class SearchableAme extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -105,7 +105,9 @@ export default class SearchableAme extends React.Component {
        // alert('A name was submitted: ');
         event.preventDefault();
         let x=this.state.tile;
-        x[this.state.key].push(parseInt(this.state.val));
+        if(this.state.val.length!=0) {
+            x[this.state.key].push(parseInt(this.state.val));
+        }
         this.setState({tile:x});
         console.log(this.state.tile[this.state.key]);
         axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",this.state.tile,
@@ -113,7 +115,7 @@ export default class SearchableAme extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -128,7 +130,7 @@ export default class SearchableAme extends React.Component {
         // }));
         // x[this.state.key]=result;
         x[this.state.key]=x[this.state.key].filter((drink, index) => index != keys);
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[keys]);
     }
 
@@ -139,7 +141,7 @@ export default class SearchableAme extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -149,7 +151,7 @@ export default class SearchableAme extends React.Component {
                                         <pre><b>{tile[key][keys]} </b>  <button onClick={this.delete.bind(this,keys)}>Delete</button></pre>
                                     )}
                                 <form onSubmit={this.handleSubmit}>
-                                    <input type="submit" value="Post" />
+                                    <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                 </form>
 
                                 <Accordion>
@@ -163,7 +165,7 @@ export default class SearchableAme extends React.Component {
                                                 value :&nbsp;
                                                 <input type="text" name="" style={{'width':'70px','height':'20px'}} value={this.state.val} onChange={this.handleChange1} />
                                             </label>
-                                            <input type="submit" value="Add & Post" />
+                                            <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Add & Post" />
                                         </form>
                                     </AccordionDetails>
                                 </Accordion>

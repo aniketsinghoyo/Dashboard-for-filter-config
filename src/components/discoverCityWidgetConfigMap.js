@@ -67,7 +67,7 @@ export default class DiscoverCity extends React.Component {
         super(props);
         this.state={
             key:this.props.keys,
-            tile:this.props.tiles,
+            tile:this.props.tiles, col:false,
             nam:'',
             val:''
         }
@@ -85,15 +85,15 @@ export default class DiscoverCity extends React.Component {
         //console.log(event.target.name);
         let x=this.state.tile;
         x[key][keys]=event.target.value;
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[key][keys]);
     }
     handleChange1(event){
-        this.setState({val: event.target.value});
+        this.setState({val: event.target.value,col:true});
 
     }
     handleChange2 = (event)=> {
-        this.setState({val: event.target.value});
+        this.setState({val: event.target.value,col:true});
     }
     handleSubmit=(event)=> {
         //alert('A name was submitted: ');
@@ -103,7 +103,7 @@ export default class DiscoverCity extends React.Component {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -114,14 +114,15 @@ export default class DiscoverCity extends React.Component {
        // alert('A name was submitted: ');
         event.preventDefault();
         let x=this.state.tile;
-        x[key][keys].push(this.state.val);
+        if(this.state.val.length!=0){
+        x[key][keys].push(this.state.val);}
         this.setState({tile:x});
         axios.post("http://filtersuggestion-api-1.search.internal.oyorooms.ms/runtimeConfig/updateConfig?password=searchfilter@123&forceUpdate=true",this.state.tile,
             {
 
                 headers: {  'x-api-key':'DemoKeyForDemoClient',
                     'oyo-client':'demo'} })
-            .then(response=>{ console.log("hari ke charno me pranaam");
+            .then(response=>{ console.log("hari ke charno me pranaam");this.setState({col:false});alert('posted successfully');
             })
             .catch(error=>{
                 alert('something went wrong... ');
@@ -136,7 +137,7 @@ export default class DiscoverCity extends React.Component {
         // }));
         // x[this.state.key]=result;
         x[this.state.key][keys]=x[this.state.key][keys].filter((drink, index) => index != keyss);
-        this.setState({tile:x});
+        this.setState({tile:x,col:true});
         console.log(this.state.tile[keys]);
     }
 
@@ -147,7 +148,7 @@ export default class DiscoverCity extends React.Component {
         return(<div>
                 <Accordion>
                     <AccordionSummary>
-                        <Typography><b>{key}</b></Typography>
+                        <Typography><p style={{'color': this.state.col ? "red" : "green"}}><b>{key}</b></p></Typography>
                     </AccordionSummary>
                     {this.generateData(tile[key]).map(keys=>
                         <Accordion>
@@ -162,7 +163,7 @@ export default class DiscoverCity extends React.Component {
                                                 <pre><b>{tile[key][keys][keyss]}      <button onClick={this.delete.bind(this,keys,keyss)}>Delete</button></b></pre>
                                             )}
                                         <form onSubmit={this.handleSubmit}>
-                                        <input type="submit" value="Post" />
+                                        <input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Post" />
                                     </form>
                                         <Accordion>
                                             <AccordionSummary>
@@ -174,7 +175,7 @@ export default class DiscoverCity extends React.Component {
 
                                                         <input type="text" name="" style={{'width':'70px','height':'20px'}} value={this.state.val} onChange={(event)=>this.handleChange1(event)} />
                                                     </label>
-                                                    &nbsp;<input type="submit" value="Add & Post" />
+                                                    &nbsp;<input type="submit" style ={{"color":this.state.col?"red":'green','font-size': '15px'}} value="Add & Post" />
                                                 </form>
                                             </AccordionDetails>
                                         </Accordion>
